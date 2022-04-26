@@ -40,6 +40,11 @@ app.post("/users", (req, res) => {
   }
 });
 
+app.get("/user", checksExistsUserAccount, (req, res) => {
+  const { user } = req;
+  return res.status(200).json(user);
+});
+
 app.get("/todos", checksExistsUserAccount, (req, res) => {
   const { user } = req;
   return res.status(201).json(user.todos);
